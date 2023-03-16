@@ -74,7 +74,6 @@ namespace Lab_5_csharp
             this.Number1.Size = new System.Drawing.Size(50, 13);
             this.Number1.TabIndex = 3;
             this.Number1.Text = "Number1";
-            this.Number1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 
@@ -93,7 +92,6 @@ namespace Lab_5_csharp
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Subtraction result";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // result
             // 
@@ -146,7 +144,6 @@ namespace Lab_5_csharp
             this.Controls.Add(this.numericUpDown1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
