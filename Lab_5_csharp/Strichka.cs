@@ -8,8 +8,31 @@ namespace Lab_5_csharp
 {
     class Strichka
     {
-        public char[] Symbol { get; set; }
-        public byte Length { get; set; }
+        private char[] symbol;
+        private byte length;
+
+        public char[] Symbol
+        {
+            get
+            {
+                return symbol;
+            }
+            set
+            {
+                symbol = value;
+            }
+        }
+        public byte Length 
+        {
+            get
+            {
+                return length;
+            }
+            set
+            {
+                length = value;
+            }
+        }
 
         public Strichka() { }
 
@@ -20,10 +43,6 @@ namespace Lab_5_csharp
 
         public Strichka(char[] symbols) {
             this.Symbol = symbols;
-        }
-
-        public byte GetLength() {
-            return this.Length;
         }
 
         public void Clear() {
