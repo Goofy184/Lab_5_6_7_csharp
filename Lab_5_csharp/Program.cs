@@ -16,6 +16,7 @@ namespace Lab_5_csharp
         {
             try
             {
+                
                 List<DesyatkovaStrichka> desyatkovaStrichkas = new List<DesyatkovaStrichka>();
                 desyatkovaStrichkas.Add(new DesyatkovaStrichka(10));
                 desyatkovaStrichkas.Add(new DesyatkovaStrichka(20));
@@ -23,6 +24,7 @@ namespace Lab_5_csharp
                 desyatkovaStrichkas.Add(new DesyatkovaStrichka(4));
                 desyatkovaStrichkas.Add(new DesyatkovaStrichka(2));
 
+               
                 foreach (var str in desyatkovaStrichkas)
                 {
                     Console.WriteLine(str.Symbol);
