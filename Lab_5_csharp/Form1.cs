@@ -31,72 +31,116 @@ namespace Lab_5_csharp
             else if (strichka1 < strichka2) {
                 this.comparisonResult.Text = "Second one is greater";
             }
+            DemonstrateInterfacesImplementations();
+            richTextBox1.AppendText("---------------LAB7-------------\n");
+            EnginCalcCollection<EngineeringCalculator> genericCollection = new EnginCalcCollection<EngineeringCalculator>();
+            EnginCalcCollection collection = new EnginCalcCollection();
+
+            AddElements(collection);
+            ShowElements(collection);
+
+            AddGenericElements(genericCollection);
+            ShowGenericElements(genericCollection);
+            DemonstrateEnumeratorWork(collection);
+
+            DemonstrateGenericEnumeratorWork(genericCollection);
+
+        }
+        private void DemonstrateInterfacesImplementations()
+        {
             try
             {
                 List<DesyatkovaStrichka> desyatkovaStrichkas = new List<DesyatkovaStrichka>();
-                desyatkovaStrichkas.Add(new DesyatkovaStrichka(10));
-                desyatkovaStrichkas.Add(new DesyatkovaStrichka(20));
-                desyatkovaStrichkas.Add(new DesyatkovaStrichka(30));
-                desyatkovaStrichkas.Add(new DesyatkovaStrichka(4));
-                desyatkovaStrichkas.Add(new DesyatkovaStrichka(2));
+                FillData(desyatkovaStrichkas);
 
-                foreach (var str in desyatkovaStrichkas)
-                {
-                    richTextBox1.AppendText(new string(str.Symbol) + "\n");
-                }
+                ShowData(desyatkovaStrichkas);
 
                 richTextBox1.AppendText("-------------------------------\n");
 
-                int count = desyatkovaStrichkas.Count;
-
-                for (int i = 0; i < count; i++)
-                {
-                    desyatkovaStrichkas.Add((DesyatkovaStrichka)desyatkovaStrichkas[i].Clone());
-                }
-                foreach (var str in desyatkovaStrichkas)
-                {
-                    richTextBox1.AppendText(new string(str.Symbol) + "\n");
-                }
+                AddClons(desyatkovaStrichkas);
+                ShowData(desyatkovaStrichkas);
                 desyatkovaStrichkas.Sort();
+
                 richTextBox1.AppendText("-------------------------------\n");
-                foreach (var str in desyatkovaStrichkas)
-                {
-                    richTextBox1.AppendText(new string(str.Symbol) + "\n");
-                }
+                ShowData(desyatkovaStrichkas);
             }
             catch (Exception ex)
             {
                 richTextBox1.AppendText(ex.Message + "\n");
             }
-            richTextBox1.AppendText("---------------LAB7-------------\n");
-            EnginCalcCollection collection = new EnginCalcCollection();
+        }
 
-            // Додавання елементів до колекції
+        private static void AddClons(List<DesyatkovaStrichka> desyatkovaStrichkas)
+        {
+            int count = desyatkovaStrichkas.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                desyatkovaStrichkas.Add((DesyatkovaStrichka)desyatkovaStrichkas[i].Clone());
+            }
+        }
+
+        private void ShowData(List<DesyatkovaStrichka> desyatkovaStrichkas)
+        {
+            foreach (var str in desyatkovaStrichkas)
+            {
+                richTextBox1.AppendText(new string(str.Symbol) + "\n");
+            }
+        }
+
+        private static void FillData(List<DesyatkovaStrichka> desyatkovaStrichkas)
+        {
+            desyatkovaStrichkas.Add(new DesyatkovaStrichka(10));
+            desyatkovaStrichkas.Add(new DesyatkovaStrichka(20));
+            desyatkovaStrichkas.Add(new DesyatkovaStrichka(30));
+            desyatkovaStrichkas.Add(new DesyatkovaStrichka(4));
+            desyatkovaStrichkas.Add(new DesyatkovaStrichka(2));
+        }
+
+        private void AddElements (EnginCalcCollection collection)
+        {
             collection.Add(new EngineeringCalculator(1, "Calculator 1\n"));
             collection.Add(new EngineeringCalculator(2, "Calculator 2\n"));
             collection.Add(new EngineeringCalculator(3, "Calculator 3\n"));
+        }
+        private void ShowElements(EnginCalcCollection collection)
+        {
+            richTextBox1.AppendText(collection.DisplayElement(1) + "\n");
+            richTextBox1.AppendText(collection.DisplayElement(2) + "\n");
+            richTextBox1.AppendText(collection.DisplayElement(3) + "\n");
+        }
 
-            // Відображення елементів за ключем
-            richTextBox1.AppendText(collection.DisplayElement(1)+ "\n");
-            richTextBox1.AppendText(collection.DisplayElement(2)+ "\n");
-            richTextBox1.AppendText(collection.DisplayElement(3)+"\n");
+        private void AddGenericElements(EnginCalcCollection<EngineeringCalculator> collection)
+        {
+            collection.Add(new EngineeringCalculator(1, "Calculator 1\n"));
+            collection.Add(new EngineeringCalculator(2, "Calculator 2\n"));
+            collection.Add(new EngineeringCalculator(3, "Calculator 3\n"));
+        }
+        private void ShowGenericElements(EnginCalcCollection<EngineeringCalculator> collection)
+        {
+            richTextBox1.AppendText(collection.DisplayElement(1) + "\n");
+            richTextBox1.AppendText(collection.DisplayElement(2) + "\n");
+            richTextBox1.AppendText(collection.DisplayElement(3) + "\n");
+        }
 
-            // Перебір елементів за допомогою GetEnumerator
+
+        private void DemonstrateEnumeratorWork(EnginCalcCollection collection)
+        {
             richTextBox1.AppendText("Using GetEnumerator:\n");
             IEnumerator enumerator = collection.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                richTextBox1.AppendText(Convert.ToString(enumerator.Current)+ "\n");
+                richTextBox1.AppendText(enumerator.Current.ToString() + "\n");
             }
-
-            // Перебір елементів за допомогою GetEnumeratorGeneric
+        }
+        private void DemonstrateGenericEnumeratorWork(EnginCalcCollection<EngineeringCalculator> collection)
+        {
             richTextBox1.AppendText("Using GetEnumeratorGeneric:\n");
-            IEnumerator<EngineeringCalculator> enumeratorGeneric = collection.GetEnumeratorGeneric();
+            IEnumerator<KeyValuePair<int, EngineeringCalculator>> enumeratorGeneric = collection.GetEnumerator();
             while (enumeratorGeneric.MoveNext())
             {
-                richTextBox1.AppendText(Convert.ToString(enumeratorGeneric.Current)+ "\n");
+                richTextBox1.AppendText(Convert.ToString(enumeratorGeneric.Current) + "\n");
             }
         }
     }
-    
 }

@@ -46,7 +46,7 @@ namespace Lab_5_csharp
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(77, 73);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             100,
             0,
@@ -59,7 +59,7 @@ namespace Lab_5_csharp
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(77, 144);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown2.Minimum = new decimal(new int[] {
             100,
             0,
@@ -130,7 +130,7 @@ namespace Lab_5_csharp
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 346);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 9;
@@ -142,7 +142,7 @@ namespace Lab_5_csharp
             // 
             this.richTextBox1.Location = new System.Drawing.Point(432, 44);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(505, 446);
+            this.richTextBox1.Size = new System.Drawing.Size(655, 740);
             this.richTextBox1.TabIndex = 10;
             this.richTextBox1.Text = "";
             // 
@@ -150,7 +150,7 @@ namespace Lab_5_csharp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1275, 819);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comparisonResult);
@@ -161,7 +161,7 @@ namespace Lab_5_csharp
             this.Controls.Add(this.Number1);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.numericUpDown1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

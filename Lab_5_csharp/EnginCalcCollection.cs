@@ -7,26 +7,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 namespace Lab_5_csharp
 {
     public class EnginCalcCollection : IEnumerable
     {
         private SortedList _collection;
-        private SortedList<int, EngineeringCalculator> _genericCollection;
-
         public EnginCalcCollection()
         {
             _collection = new SortedList();
-            _genericCollection = new SortedList<int, EngineeringCalculator>();
         }
-
         public void Add(EngineeringCalculator calculator)
         {
             _collection.Add(calculator.Id, calculator);
-            _genericCollection.Add(calculator.Id, calculator);
         }
-
         public string DisplayElement(int id)
         {
             if (_collection.ContainsKey(id))
@@ -38,15 +31,38 @@ namespace Lab_5_csharp
                 return ("Element not found.");
             }
         }
-
         public IEnumerator GetEnumerator()
         {
             return _collection.GetEnumerator();
         }
 
-        public IEnumerator<EngineeringCalculator> GetEnumeratorGeneric()
+    }
+    public class EnginCalcCollection<V> : IEnumerable<KeyValuePair<int, V>> where V : EngineeringCalculator
+    {
+        private SortedList<int, V> list = new SortedList<int, V>();
+        public void Add(V calculator)
         {
-            return _genericCollection.Values.GetEnumerator();
+            list.Add(calculator.Id, calculator);
         }
+        public string DisplayElement(int id)
+        {
+            if (list.ContainsKey(id))
+            {
+                return Convert.ToString(list[id]);
+            }
+            else
+            {
+                return ("Element not found.");
+            }
+        }
+        public IEnumerator<KeyValuePair<int, V>> GetEnumerator()
+        {
+            return list.GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return list.GetEnumerator();
+        }
+
     }
 }

@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Lab_5_csharp
 {
-    class Strichka
+    class Strichka : IStrichka
     {
         private char[] symbol;
-        private byte length;
+        private long length;
         public char[] Symbol
         {
             get
@@ -20,7 +20,7 @@ namespace Lab_5_csharp
                 symbol = value;
             }
         }
-        public byte Length 
+        public long Length 
         {
             get
             {

@@ -8,6 +8,6 @@ namespace Lab_5_csharp
     interface IStrichka
     {
         void Clear();
-        byte Length { get; set; }
+        long Length { get; set; }
     }
 }
